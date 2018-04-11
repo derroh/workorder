@@ -102,6 +102,10 @@
  															 </div>
  														 </div>
 															<div class="hidden-sm hidden-xs btn-group">
+																				
+															<a class="btn btn-xs btn-warning"  href="../uploads/<?php echo $row['File'];?>" download>
+																<i class="ace-icon fa fa-download bigger-120" title="Download file"></i>
+															</a>
 																
 																<?php
 																$id = $row['File'];

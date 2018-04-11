@@ -1,4 +1,6 @@
 <?php
+
+ini_set("default_charset", "UTF-8");
 ob_start();
 session_start();
 
@@ -8,9 +10,10 @@ define('DBUSER','root');
 define('DBPASS','');
 define('DBNAME','keysight');
 
-$db = new PDO("mysql:host=".DBHOST.";port=3306;dbname=".DBNAME, DBUSER, DBPASS);
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+$db = new PDO("mysql:host=".DBHOST.";port=3306;dbname=".DBNAME, DBUSER, DBPASS, 
+                        array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// $db->setAttribute(array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
 //set timezone
 date_default_timezone_set('Europe/London');

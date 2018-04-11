@@ -1,6 +1,4 @@
 <?php
-
- 
   require('../func/config.php');
   //if not logged in redirect to login page
   if(!$user->is_logged_in()){ header('Location: login'); }
@@ -46,17 +44,18 @@
         $TurnaroundTime = $csv[16]; 
         $FailAge = $csv[17]; 
         $FailAgeInYears = $csv[18];
-        $ActivityBillType = $csv[19];
-        $ActivityType = $csv[20];
-        $ReportYearMonth = $csv[21];
+        $OPT_CDS = $csv[19];
+        $ActivityBillType = $csv[20];
+        $ActivityType = $csv[21];
+        $ReportYearMonth = $csv[22];
        // 
-        $Month = $csv[22];
+        $Month = $csv[23];
         
 
-        $stmt = $db->prepare("INSERT INTO `analysis_table`(`Model`, `Serial#`, `SR#`, `Service Oder Number`, `Type/Class`, `Received Date`, `Part Cost`, `Labor Cost`, `Total Cost`, `Customer Name`, `Customer Country`, `Customer City`, `Customer Zip Code`, `Product Line`, `Repair Office`, `ReportDate`, `Turnaround Time`, `Fail Age`, `Fail Age In Years`, `Activity Bill Type`, `Activity Type`, `Report Year Month`, `Month`) VALUES 
+        $stmt = $db->prepare("INSERT INTO `analysis_table`(`Model`, `Serial#`, `SR#`, `Service Oder Number`, `Type/Class`, `Received Date`, `Part Cost`, `Labor Cost`, `Total Cost`, `Customer Name`, `Customer Country`, `Customer City`, `Customer Zip Code`, `Product Line`, `Repair Office`, `ReportDate`, `Turnaround Time`, `Fail Age`, `Fail Age In Years`, `OPT_CDS`, `Activity Bill Type`, `Activity Type`, `Report Year Month`, `Month`) VALUES 
         (:Model, :Serial, :SR, :ServiceOderNumber, :TypeClass, :ReceivedDate, :PartCost, :LaborCost, :TotalCost,
         :CustomerName, :CustomerCountry, :CustomerCity, :CustomerZipCode, :ProductLine, :RepairOffice,
-        :ReportDate, :TurnaroundTime, :FailAge, :FailAgeInYears,  :ActivityBillType, :ActivityType, 
+        :ReportDate, :TurnaroundTime, :FailAge, :FailAgeInYears, :OPT_CDS, :ActivityBillType, :ActivityType, 
         :ReportYearMonth, :Month)");
 
         $stmt->bindparam(':Model', $Model);
@@ -78,6 +77,7 @@
         $stmt->bindparam(':TurnaroundTime', $TurnaroundTime);
         $stmt->bindparam(':FailAge', $FailAge);
         $stmt->bindparam(':FailAgeInYears', $FailAgeInYears);
+        $stmt->bindparam(':OPT_CDS', $OPT_CDS);
         $stmt->bindparam(':ActivityBillType', $ActivityBillType);
         $stmt->bindparam(':ActivityType', $ActivityType);
         $stmt->bindparam(':ReportYearMonth', $ReportYearMonth);
