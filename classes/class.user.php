@@ -115,10 +115,10 @@ class User extends Password{
     $mail->Host       = "smtp.gmail.com";
     $mail->Port       = 465;
     $mail->AddAddress($email);
-    $mail->Username="acmp013@gmail.com";
+    $mail->Username="youremail@gmail.com";
     $mail->Password="eegrnnxbbvghjmxu";
-    $mail->SetFrom('acmp013@gmail.com','Keysight Technologies');
-    $mail->AddReplyTo("acmp013@gmail.com","Keysight Technologies");
+    $mail->SetFrom('youremail@gmail.com','Keysight Technologies');
+    $mail->AddReplyTo("youremail@gmail.com","Keysight Technologies");
     $mail->Subject    = $subject;
     $mail->MsgHTML($message);
     $mail->Send();
